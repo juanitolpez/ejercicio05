@@ -46,7 +46,7 @@ public class MyUI extends UI {
                     + ", it works!"));*/
         });
         
-        Button miBoton = new Button("Este boton no hace nada");
+        Button miBoton = new Button("Este boton si que no hace nada");
         miBoton.addClickListener(
 			
 			event ->
