@@ -52,7 +52,7 @@ public class MyUI extends UI {
         surname.setPlaceholder("Tu apellido");
         surname.setMaxLength(30);
         updateCaption(surname, 0);
-        surname.addValueChangeListener(event -> updateCaption(name, event.getValue().length()));
+        surname.addValueChangeListener(event -> updateCaption(surname, event.getValue().length()));
         /*surname.addValueChangeListener(event -> Notification.show("Value changed:",
                 String.valueOf(event.getValue()),
                 Type.TRAY_NOTIFICATION));*/
@@ -61,13 +61,13 @@ public class MyUI extends UI {
         age.setPlaceholder("25");
         age.setMaxLength(3);
         updateCaption(age, 0);
-        age.addValueChangeListener(event -> updateCaption(name, event.getValue().length()));
+        age.addValueChangeListener(event -> updateCaption(age, event.getValue().length()));
         
         address.setCaption("Type your address");
         address.setPlaceholder("Tu calle 25, 2D");
         address.setMaxLength(50);
         updateCaption(address, 0);
-        address	.addValueChangeListener(event -> updateCaption(name, event.getValue().length()));
+        address	.addValueChangeListener(event -> updateCaption(address, event.getValue().length()));
         
         Button button = new Button("Click Me");
         button.addClickListener( e -> {
