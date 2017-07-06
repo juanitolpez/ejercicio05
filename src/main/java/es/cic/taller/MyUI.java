@@ -69,13 +69,13 @@ public class MyUI extends UI {
         updateCaption(address, 0);
         address	.addValueChangeListener(event -> updateCaption(address, event.getValue().length()));
         
-        Button button = new Button("Click Me");
+        Button button = new Button("Enviar");
         button.addClickListener( e -> {
         	
-        	name.setValue("Tu_Nombre");
+        	//name.setValue("Tu_Nombre");
         	
-            /*layout.addComponent(new Label("Thanks " + name.getValue() 
-                    + ", it works!"));*/
+            layout.addComponent(new Label("Thanks " + name.getValue() 
+                    + ", it works!"));
         });
         
         Button miBoton = new Button("Este boton si que no hace nada");
@@ -87,7 +87,7 @@ public class MyUI extends UI {
 			
 		);
         
-        layout.addComponents(name, surname, age, address);
+        layout.addComponents(name, surname, age, address, button);
         
         setContent(layout);
         
