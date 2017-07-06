@@ -26,16 +26,48 @@ import com.vaadin.ui.Button.ClickListener;
 @Theme("mytheme")
 public class MyUI extends UI {
 
+	
     @Override
     protected void init(VaadinRequest vaadinRequest) {
         final VerticalLayout layout = new VerticalLayout();
         
         final TextField name = new TextField();
+        final TextField surname = new TextField();
+        final TextField age = new TextField();
+        final TextField address = new TextField();
+        
         name.setCaption("Type your name here:");
-
-        name.addValueChangeListener(event -> Notification.show("Value changed:",
+        name.setPlaceholder("Tu nombre");
+        name.setMaxLength(30);
+        updateCaption(name, 0);
+        name.addValueChangeListener(event -> updateCaption(name, event.getValue().length()));
+        
+        
+       
+        /*name.addValueChangeListener(event -> Notification.show("Value changed:",
                 String.valueOf(event.getValue()),
-                Type.TRAY_NOTIFICATION));
+                Type.TRAY_NOTIFICATION));*/
+        
+        surname.setCaption("Type your surname here:");
+        surname.setPlaceholder("Tu apellido");
+        surname.setMaxLength(30);
+        updateCaption(surname, 0);
+        surname.addValueChangeListener(event -> updateCaption(name, event.getValue().length()));
+        /*surname.addValueChangeListener(event -> Notification.show("Value changed:",
+                String.valueOf(event.getValue()),
+                Type.TRAY_NOTIFICATION));*/
+        
+        age.setCaption("Type your age");
+        age.setPlaceholder("25");
+        age.setMaxLength(3);
+        updateCaption(age, 0);
+        age.addValueChangeListener(event -> updateCaption(name, event.getValue().length()));
+        
+        address.setCaption("Type your address");
+        address.setPlaceholder("Tu calle 25, 2D");
+        address.setMaxLength(50);
+        updateCaption(address, 0);
+        address	.addValueChangeListener(event -> updateCaption(name, event.getValue().length()));
         
         Button button = new Button("Click Me");
         button.addClickListener( e -> {
@@ -55,9 +87,20 @@ public class MyUI extends UI {
 			
 		);
         
-        layout.addComponents(name, button, miBoton);
+        layout.addComponents(name, surname, age, address);
         
         setContent(layout);
+        
+        
+    }
+    
+    private void updateCaption(final TextField string, final int textLength) {
+    	final StringBuilder builder = new StringBuilder();
+    	builder.append(String.valueOf(textLength));
+    	if (string.getMaxLength()>=0)
+    		builder.append("/").append(string.getMaxLength());
+    	builder.append(" characters");
+    	string.setCaption(builder.toString());
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
