@@ -76,6 +76,10 @@ public class MyUI extends UI {
         	
             layout.addComponent(new Label("Thanks " + name.getValue() 
                     + ", it works!"));
+            
+            Notification.show("Datos: \n" + " Nombre: " +name.getValue()+ "\nApellido: " + surname.getValue()+
+            		"\nEdad: " + age.getValue()+"\nDireccion: " + address.getValue(),
+            		Notification.Type.TRAY_NOTIFICATION);
         });
         
         Button miBoton = new Button("Este boton si que no hace nada");
